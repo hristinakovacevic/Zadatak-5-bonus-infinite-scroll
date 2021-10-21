@@ -1,5 +1,9 @@
 
 
+
+
+let lightbox = document.querySelector('.lightbox')
+
 let grid = document.querySelector('.grid')
 let list = document.querySelector('.list')
 let loader = document.querySelector('.loader')
@@ -13,7 +17,9 @@ grid.addEventListener('click', ()=>{
     photos.classList.remove('view')
 })
 
-
+lightbox.addEventListener('click', ()=>{
+    lightbox.classList.remove('show')
+})
 
 
 let page = 1
@@ -32,35 +38,59 @@ async function getPhotos(){
 
 
  function displayPhotos(data){
+
+
         data.forEach((element) => {
          if (element != null) {
+             if (!element.alt_description) {
+                element.alt_description = 'something' 
+             }
              
             document.querySelector('.photos').innerHTML += `
                 <div class="wrapper">
                     <div class="card-style">
                         <div class="user-img-wrap">
                            
-                                <img class="user-img"  src="${element.user.profile_image.small}" alt="">
+                                <img class="user-img"  src="${element.user.profile_image.small}" alt="Image of ${element.alt_description}">
                                 <h3 class="username">${element.user.name}</h3>
                         </div>
                         <main class="main-img-wrap">
-                        <a href="${element.links.html}" target="_blank">
-                                <img  class="main-img" src="${element.urls.regular}" alt="">
-                        </a>
+                       
+                                <img class="main-img" style="cursor:pointer" src="${element.urls.regular}" alt="Image of ${element.alt_description}">
+                        
                             </main>
                             <footer>
                             <p class="likes"><span>${element.likes}</span>Likes</p>
                             <p class="downloads"><span>1256</span>Downloads</p>
-                            <p><a href="">More info</a></p>
+                            <p><a href="${element.links.html}">More info</a></p>
                         </footer>
                      </div> 
                 </div>`
+                
         }
+
+      
      })
-     
-     }
+
+    let images = document.querySelectorAll('.main-img');
+    images.forEach((image) => image.addEventListener('click', ()=>{
+            showPhoto(image.src)
+        })
+    )
+}
  
-  
+/* --------------------------------------------Lightbox---------------------------------------------- */
+
+function showPhoto(source) {
+    let lightbox = document.querySelector('.lightbox')
+
+    lightbox.classList.add('show')
+    lightbox.innerHTML= ` 
+        <img src="${source}" alt="">
+        `
+}
+   
+/* -------------------------------------------------------------------------------------------------- */
     function showLoading(){
     loader.classList.add('active');
     setTimeout(getPhotos,1000)

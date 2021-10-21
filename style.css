@@ -99,9 +99,19 @@ margin-top: -13%;
     overflow: auto;
     z-index: 2;
 }
- .lightbox.show{
-    display: block;
-}
+ 
+
+.lightbox img {
+    width:400px;
+    height: 500px;
+  }
+  
+  .lightbox.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
 a{
     color: lightgoldenrodyellow;
     text-decoration: none;
