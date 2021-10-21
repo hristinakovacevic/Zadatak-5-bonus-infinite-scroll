@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    
+   padding: 3%;
+    background-color: gray;
+    font-family: 'Josefin Sans';
+    color: floralwhite;
+    
+}
+header{
+    
+    display: flex;
+    justify-content: center;
+    column-gap: 5%;
+    align-items: center;
+}
+.grid-list-tabs{
+    display: flex;
+    justify-content: space-around;
+    width: 140px;
+    
+}
+.grid, .list{
+    cursor: pointer;
+    
+}
+
+.loader{
+     
+    display: flex;
+    justify-content: center;
+    
+}
+.loader-img{
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+.active .loader{
+    display: block;
+}
+.img-loader{
+    z-index: 0;
+}
+.photos{
+    padding-top: 6%;
+    display:grid;
+    grid-template-columns: repeat(3, 2fr);
+    row-gap: 4em;
+}
+
+.wrapper{
+    text-align: -webkit-center;
+}
+.card-style{
+    width: 370px;
+    background-color: rgb(58, 57, 57);
+   
+}
+.user-img-wrap{
+    display: flex;
+    align-items: center;
+    padding: 17px;
+    column-gap: 33px;
+}
+.user-img{
+    border-radius:50% ;
+    width: 60px;
+    height: 60px;
+}
+.main-img-wrap{
+
+    height: 20vh;
+    overflow: hidden;
+}
+.main-img{
+width: 370px;
+transform: scale(0.8);
+margin-top: -13%;
+
+}
+.likes, .downloads{
+    display: flex;
+    column-gap: 8px;
+}
+.lightbox{
+    display: none;
+    background: hsl(229, 31%, 21%, .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100vw;
+    overflow: auto;
+    z-index: 2;
+}
+ 
+
+.lightbox img {
+    width:400px;
+    height: 500px;
+  }
+  
+  .lightbox.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+a{
+    color: lightgoldenrodyellow;
+    text-decoration: none;
+}
+footer{
+    padding:11px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* --------------------------------------------Toggle view-------------------------------------------------- */
+.photos.view{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/* ---------------------------------------------Media---------------------------------------------------------- */
+@media (max-width:500px){
+
+   .container{
+       width: inherit;
+   }
+    header{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .grid-list-tabs{
+        display: flex;
+    justify-content: center;
+    column-gap: 3%;
+    padding-top: 7%;
+    }
+    .photos{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .card-style{
+        width: inherit;
+    }
+    
+}
